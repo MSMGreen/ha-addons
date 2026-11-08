@@ -13,9 +13,12 @@ Only one Music Assistant add-on can run at a time, because both use port 8095.
 
 ## Taking over an existing Music Assistant
 
-This add-on has its own `/data`. On first boot, if `/data` has no `settings.json`
-and `/media/ma-seed/settings.json` exists, it copies `/media/ma-seed` into `/data`.
-Delete `/media/ma-seed` afterwards: it contains logins and tokens.
+This add-on has its own `/data`. To start from another Music Assistant's data, keep
+its logins, playlists and players, stop that add-on, take a partial HA backup of it,
+and set this add-on's `seed_backup` option to the backup's slug before first start.
+If `/data` has no `settings.json`, it takes the data from that backup. If anything is
+wrong with the backup, the add-on stops and logs why, rather than starting empty.
+Clear the option afterwards.
 
 ## Moving to a new Music Assistant version
 

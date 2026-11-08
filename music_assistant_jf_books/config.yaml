@@ -25,6 +25,7 @@ apparmor: true
 map:
   - media:rw
   - ssl:ro
+  - backup:ro
 init: false
 backup_exclude:
   - cache.db
@@ -36,9 +37,11 @@ tmpfs: true
 options:
   log_level: info
   safe_mode: false
+  seed_backup: ""
 schema:
   log_level: list(debug|info|warning|error)
   safe_mode: bool
+  seed_backup: str?
 privileged:
   - SYS_ADMIN
   - DAC_READ_SEARCH
